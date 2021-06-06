@@ -19,7 +19,7 @@ class Register extends Component {
             {
                 method:'POST',
                 headers:{
-                    'Content-Typoe':'application/json'
+                    'Content-Type':'application/json'
                 },
                 body: JSON.stringify(
                     {
@@ -52,7 +52,7 @@ class Register extends Component {
         this.setState(
             {
                 username : "",
-                passsword : "",
+                password : "",
                 re_password : "",
                 email : ""
             }
@@ -63,7 +63,7 @@ class Register extends Component {
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
                 <div className="bg-white p-16 rounded-xl shadow-2xl w-2/3 border-4 border-collapse border-gray-500">
                     <h2 className="text-3xl font-bold font-serif mb-10 text-red-900">Create Your Account</h2>
-                    <form className="space-y-5" onSubmit={this.handleSubmit}>
+                    <div className="space-y-5">
                         <div>
                             <label className="block mb-2 font-bold font-serif text-red-900">Username</label>
                             <input 
@@ -124,12 +124,13 @@ class Register extends Component {
                             />
                             <label className="ml-3 font-serif text-red-900 text-lg">I agree with <a href="/terms" className="font-extrabold underline">terms and privacy</a>.</label>
                         </div>
-                        <input
+                        <button
                             className="block w-full p-4 text-2xl font-sans rounded text-black bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-green-700 hover:to-blue-500"
-                            type="submit"
-                            value="Sign Up" 
-                        />
-                    </form>
+                            onClick={this.handleSubmit}
+                        >
+                            Sign Up
+                        </button>
+                    </div>
                 </div>
             </div>
         );
