@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import swal from "sweetalert";
+import axios from "axios";
 
 
 class Register extends Component {
@@ -10,27 +12,37 @@ class Register extends Component {
             re_password:"",
             email:""
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.Submit.bind(this)
     }
 
-    async postdata(username, password, re_password, email){
-        let result = await fetch(
-            'http://localhost:8000/api/auth/register',
-            {
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json'
-                },
-                body: JSON.stringify(
-                    {
-                        "username":username,
-                        "password":password,
-                        "re_password":re_password,
-                        "email":email
-                    }
-                )
+    Submit() {
+        axios.post('http://127.0.0.1:8000/api/auth/register', {
+            username : this.state.username,
+            password : this.state.password,
+            re_password : this.state.re_password,
+            email : this.state.email
+        })
+        .catch(function (error) {
+            if (error.response) {
+                swal({
+                    text: error.response.data.message,
+                    icon: "error"
+                });
             }
-        ) 
+        })
+        .then(
+            function(response) {
+                if (response) {
+                    swal({
+                        text: response.data.message,
+                        icon: "success"
+                    })
+                    .then((value) => {
+                        window.location = "/login"
+                    })
+                }
+            }
+        )
     }
 
 
@@ -62,7 +74,7 @@ class Register extends Component {
         return(
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500">
                 <div className="bg-white p-16 rounded-xl shadow-2xl w-2/3 border-4 border-collapse border-gray-500">
-                    <h2 className="text-3xl font-bold font-serif mb-10 text-red-900">Create Your Account</h2>
+                    <h2 className="text-3xl font-bold font-serif mb-6 text-red-900">Create Your Account</h2>
                     <div className="space-y-5">
                         <div>
                             <label className="block mb-2 font-bold font-serif text-red-900">Username</label>
@@ -123,6 +135,9 @@ class Register extends Component {
                                 type="checkbox"
                             />
                             <label className="ml-3 font-serif text-red-900 text-lg">I agree with <a href="/terms" className="font-extrabold underline">terms and privacy</a>.</label>
+                        </div>
+                        <div>
+                        <h4 className="font-serif text-lg text-red-900 ml-1 mb-8">If you have an account <a href="/login" className="font-extrabold underline">login here</a>.</h4>
                         </div>
                         <button
                             className="block w-full p-4 text-2xl font-sans rounded text-black bg-gradient-to-r from-yellow-400 to-pink-500 hover:from-green-700 hover:to-blue-500"
