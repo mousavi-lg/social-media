@@ -12,7 +12,7 @@ class Home extends Component {
                 <h1 className="text-center text-4xl -mt-9 mb-16">Welcome to your site!</h1>
                 <div className="mt-4">
                     This website is a social media site. If you are intrested to learn more about the
-                    constructor or contact with managers <a className="underline" href="/about_us">Click Here</a>.
+                    constructor or contact with managers <a className="underline" href="/">Click Here</a>.
                 </div>
                 <div className="mt-4">
                     If you want to know more, how this site has been created please check out my github
@@ -39,7 +39,7 @@ class Home extends Component {
                     <button className="mt-9 text-2xl p-3 ml-24 rounded-xl border-none animate-bounce hover:shadow-2xl
                     hover:bg-green-500 bg-blue-400"><a href="/login">Login</a></button>
                     <button className="mt-9 text-2xl p-3 ml-24 rounded-xl border-none animate-bounce hover:shadow-2xl
-                    hover:bg-green-500 bg-blue-400"><a href="/mailbox">Mailbox</a></button>
+                    hover:bg-green-500 bg-blue-400">Mailbox</button>
                     <button className="mt-9 text-2xl p-3 ml-24 rounded-xl border-none animate-bounce hover:shadow-2xl
                     hover:bg-green-500 bg-blue-400"><a href="https://github.com/mousavi-lg">My github channel</a></button>
                 </div>
