@@ -5,12 +5,14 @@ from django.contrib.auth.models import User
 
 class TestViews(TestSetUp):
     def test_user_can_login_with_correct_data(self):
-        User.objects.create_user(username=self.correct_login_data['username'], password=self.correct_login_data['password'])
+        User.objects.create_user(username=self.correct_login_data['username'],
+        password=self.correct_login_data['password'])
         response = self.client.post(self.login_url, self.correct_login_data)
         self.assertEqual(response.status_code, 200, "error")
 
     def test_user_can_login_with_incorrect_data(self):
-        User.objects.create_user(username=self.correct_login_data['username'], password=self.correct_login_data['password'])
+        User.objects.create_user(username=self.correct_login_data['username'],
+        password=self.correct_login_data['password'])
         response = self.client.post(self.login_url, self.incorrect_login_data)
         self.assertEqual(response.status_code, 401, "error")
 
