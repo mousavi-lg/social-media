@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Message
+from .models import Message, Profile
 
 
 class MessageAdmin(admin.ModelAdmin):
@@ -22,3 +22,7 @@ class MessageAdmin(admin.ModelAdmin):
     actions_on_top = True
 admin.site.register(Message, MessageAdmin)
 
+# register profile model to admin as class ProfileAdmin
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'date_of_birth', 'photo']
+admin.site.register(Profile, ProfileAdmin)
